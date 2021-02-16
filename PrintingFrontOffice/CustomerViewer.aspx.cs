@@ -16,5 +16,6 @@ public partial class CustomerViewer : System.Web.UI.Page
         ACustomer = (clsCustomer)Session["ACustomer"];
         //display the customer number for this entry
         Response.Write(ACustomer.CustomerNo);
+        //
     }
 }
