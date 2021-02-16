@@ -20,7 +20,7 @@ public partial class ACustomer : System.Web.UI.Page
         //capture the customer no
         ACustomer.CustomerNo = txtCustomerNo.Text;
         //store the customer in the session object
-        Session["ACustomer"] = ACustomer;
+        Session["ACustomer"] = ACustomer;                  
         //redirect to the viewer page
         Response.Redirect("CustomerViewer.aspx");
     }
