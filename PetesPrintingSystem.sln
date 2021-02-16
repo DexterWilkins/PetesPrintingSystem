@@ -8,6 +8,7 @@ EndProject
 Project("{E24C65DC-7377-472B-9ABA-BC803B73C61A}") = "PrintingFrontOffice", "PrintingFrontOffice\", "{222369D0-4787-46E5-8056-6A3C2EF8F9A8}"
 	ProjectSection(WebsiteProperties) = preProject
 		TargetFrameworkMoniker = ".NETFramework,Version%3Dv4.6.1"
+		ProjectReferences = "{cc50c60a-32f8-4da1-b43e-40974ed21c6d}|PrintingClasses.dll;"
 		Debug.AspNetCompiler.VirtualPath = "/localhost_50853"
 		Debug.AspNetCompiler.PhysicalPath = "PrintingFrontOffice\"
 		Debug.AspNetCompiler.TargetPath = "PrecompiledWeb\localhost_50853\"
