@@ -144,17 +144,34 @@ namespace PrintingClasses
 
         public bool Find(int customerNo)
         {
-            //set the private data members to the test data value
-            mCustomerNo = 21;
-            mDateAdded = Convert.ToDateTime("16/02/2021");
-            mForeName = "Test ForeName";
-            mLastName = "Test LastName";
-            mTitle = "Test Title";
-            mEmail = "Test Email";
-            mPhoneNo = 0123456789;
-            mActive = true;
-            //always return true
-            return true;
+            //create an instance of the data connection
+            clsDataConnection DB = new clsDataConnection();
+            //add the paramteter for the customer no to search for
+            DB.AddParameter("@CustomerNo", CustomerNo);
+            //execute the stored procedure 
+            DB.Execute("sproc_tblCustomer_FilterByCustomerNo");
+            //if one record is found (there should be either one or zero)
+            if (DB.Count == 1)
+            {
+                //copy the data from the database to the private data members
+                mCustomerNo = Convert.ToInt32(DB.DataTable.Rows[0]["CustomerNo"]);
+                mDateAdded = Convert.ToDateTime(DB.DataTable.Rows[0]["DateAdded"]);
+                mForeName = Convert.ToString(DB.DataTable.Rows[0]["ForeName"]);
+                mLastName = Convert.ToString(DB.DataTable.Rows[0]["LastName"]);
+                mTitle = Convert.ToString(DB.DataTable.Rows[0]["Title"]);
+                mEmail = Convert.ToString(DB.DataTable.Rows[0]["Email"]);
+                mPhoneNo = Convert.ToInt32(DB.DataTable.Rows[0]["PhoneNo"]);
+                mActive = Convert.ToBoolean(DB.DataTable.Rows[0]["Active"]);
+                //always return true
+                return true;
+            }
+            //if no record was found
+            else
+            {
+                //return false indicating a problem
+                return false;
+            }
+            
         }
     }
 }
