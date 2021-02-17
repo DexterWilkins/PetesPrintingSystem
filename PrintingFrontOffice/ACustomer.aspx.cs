@@ -18,7 +18,7 @@ public partial class ACustomer : System.Web.UI.Page
         //create a new instance of clsCustomer
         clsCustomer ACustomer = new clsCustomer();
         //capture the customer no
-        ACustomer.CustomerNo = txtCustomerNo.Text;
+        //ACustomer.CustomerNo = txtCustomerNo.Text;
         //store the customer in the session object
         Session["ACustomer"] = ACustomer;                  
         //redirect to the viewer page
