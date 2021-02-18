@@ -147,7 +147,7 @@ namespace PrintingClasses
             //create an instance of the data connection
             clsDataConnection DB = new clsDataConnection();
             //add the paramteter for the customer no to search for
-            DB.AddParameter("@CustomerNo", CustomerNo);
+            DB.AddParameter("@CustomerNo", customerNo);
             //execute the stored procedure 
             DB.Execute("sproc_tblCustomer_FilterByCustomerNo");
             //if one record is found (there should be either one or zero)
@@ -159,7 +159,7 @@ namespace PrintingClasses
                 mForeName = Convert.ToString(DB.DataTable.Rows[0]["ForeName"]);
                 mLastName = Convert.ToString(DB.DataTable.Rows[0]["LastName"]);
                 mTitle = Convert.ToString(DB.DataTable.Rows[0]["Title"]);
-                mEmail = Convert.ToString(DB.DataTable.Rows[0]["Email"]);
+                mEmail = Convert.ToString(DB.DataTable.Rows[0]["CustomerEmail"]);
                 mPhoneNo = Convert.ToInt32(DB.DataTable.Rows[0]["PhoneNo"]);
                 mActive = Convert.ToBoolean(DB.DataTable.Rows[0]["Active"]);
                 //always return true
