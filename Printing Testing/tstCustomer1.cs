@@ -193,7 +193,7 @@ namespace Printing_Testing
             //invoke the method
             Found = ACustomer.Find(CustomerNo);
             //check the property
-            if (ACustomer.ForeName != "Test ForeName")
+            if (ACustomer.ForeName != "Jon")
             {
                 OK = false;
             }
@@ -215,7 +215,7 @@ namespace Printing_Testing
             //invoke the method
             Found = ACustomer.Find(CustomerNo);
             //check the property
-            if (ACustomer.LastName != "Test LastName")
+            if (ACustomer.LastName != "Jonathan")
             {
                 OK = false;
             }
@@ -237,7 +237,7 @@ namespace Printing_Testing
             //invoke the method
             Found = ACustomer.Find(CustomerNo);
             //check the property
-            if (ACustomer.Title != "Test Title")
+            if (ACustomer.Title != "Mr")
             {
                 OK = false;
             }
@@ -259,7 +259,7 @@ namespace Printing_Testing
             //invoke the method
             Found = ACustomer.Find(CustomerNo);
             //check the property
-            if (ACustomer.Email != "Test Email")
+            if (ACustomer.Email != "JonJonathan@hotmail.com")
             {
                 OK = false;
             }
@@ -281,7 +281,7 @@ namespace Printing_Testing
             //invoke the method
             Found = ACustomer.Find(CustomerNo);
             //check the address no
-            if (ACustomer.PhoneNo != 0123456789)
+            if (ACustomer.PhoneNo != 1234567891)
             {
                 OK = false;
             }
