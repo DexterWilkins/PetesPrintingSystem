@@ -128,7 +128,7 @@ namespace Printing_Testing
             //boolean variable to store the results of the validation
             Boolean Found = false;
             //create some test data to use with the method
-            Int32 CustomerNo = 21;
+            Int32 CustomerNo = 1;
             //invoke the method
             Found = ACustomer.Find(CustomerNo);
             //test to see if the result is true
@@ -145,11 +145,11 @@ namespace Printing_Testing
             //boolean variable to record if data is OK 
             Boolean OK = true;
             //create some test data to use with the method
-            Int32 CustomerNo = 21;
+            Int32 CustomerNo = 1;
             //invoke the method
             Found = ACustomer.Find(CustomerNo);
             //check the address no
-            if (ACustomer.CustomerNo != 21)
+            if (ACustomer.CustomerNo != 1)
             {
                 OK = false;
             }
@@ -167,7 +167,7 @@ namespace Printing_Testing
             //boolean variable to record if data is OK 
             Boolean OK = true;
             //create some test data to use with the method
-            Int32 CustomerNo = 21;
+            Int32 CustomerNo = 1;
             //invoke the method
             Found = ACustomer.Find(CustomerNo);
             //check the property
@@ -189,7 +189,7 @@ namespace Printing_Testing
             //boolean variable to record if data is OK 
             Boolean OK = true;
             //create some test data to use with the method
-            Int32 CustomerNo = 21;
+            Int32 CustomerNo = 1;
             //invoke the method
             Found = ACustomer.Find(CustomerNo);
             //check the property
@@ -211,7 +211,7 @@ namespace Printing_Testing
             //boolean variable to record if data is OK 
             Boolean OK = true;
             //create some test data to use with the method
-            Int32 CustomerNo = 21;
+            Int32 CustomerNo = 1;
             //invoke the method
             Found = ACustomer.Find(CustomerNo);
             //check the property
@@ -233,7 +233,7 @@ namespace Printing_Testing
             //boolean variable to record if data is OK 
             Boolean OK = true;
             //create some test data to use with the method
-            Int32 CustomerNo = 21;
+            Int32 CustomerNo = 1;
             //invoke the method
             Found = ACustomer.Find(CustomerNo);
             //check the property
@@ -255,7 +255,7 @@ namespace Printing_Testing
             //boolean variable to record if data is OK 
             Boolean OK = true;
             //create some test data to use with the method
-            Int32 CustomerNo = 21;
+            Int32 CustomerNo = 1;
             //invoke the method
             Found = ACustomer.Find(CustomerNo);
             //check the property
@@ -277,7 +277,7 @@ namespace Printing_Testing
             //boolean variable to record if data is OK 
             Boolean OK = true;
             //create some test data to use with the method
-            Int32 CustomerNo = 21;
+            Int32 CustomerNo = 1;
             //invoke the method
             Found = ACustomer.Find(CustomerNo);
             //check the address no
@@ -299,7 +299,7 @@ namespace Printing_Testing
             //boolean variable to record if data is OK 
             Boolean OK = true;
             //create some test data to use with the method
-            Int32 CustomerNo = 21;
+            Int32 CustomerNo = 1;
             //invoke the method
             Found = ACustomer.Find(CustomerNo);
             //check the address no
