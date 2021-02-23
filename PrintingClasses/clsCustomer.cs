@@ -214,7 +214,44 @@ namespace PrintingClasses
                 Error = Error + "The date was not a valid date : ";
             }
 
+            // if the forename blank
+            if (foreName.Length == 0)
+            {
+                //record the error
+                Error = Error + "The fore name may not be blank : ";
+            }
 
+            // if the forename is too long
+            if (foreName.Length > 25)
+            {
+                Error = Error + "The forename must be less than 25 characters : ";
+            }
+
+            // if the forename blank
+            if (lastName.Length == 0)
+            {
+                //record the error
+                Error = Error + "The fore name may not be blank : ";
+            }
+
+            // if the forename is too long
+            if (lastName.Length > 25)
+            {
+                Error = Error + "The forename must be less than 25 characters : ";
+            }
+
+            // if the forename blank
+            if (email.Length == 0)
+            {
+                //record the error
+                Error = Error + "The email may not be blank : ";
+            }
+
+            // if the forename is too long
+            if (email.Length > 50)
+            {
+                Error = Error + "The email must be less than 50 characters : ";
+            }
             //return any error message
             return Error;
         }
