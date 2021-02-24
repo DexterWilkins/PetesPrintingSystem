@@ -11,7 +11,6 @@ namespace Printing_Testing
         [TestMethod]
         public void InstanceOk()
         {
-
             clsOrder AnOrder = new clsOrder();
 
             Assert.IsNotNull(AnOrder);
