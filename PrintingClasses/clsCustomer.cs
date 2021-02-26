@@ -190,8 +190,27 @@ namespace PrintingClasses
             if (title.Length > 4)
             {
                 //record the error
-                Error = Error + "The title must be less than 5 characters : 0";
+                Error = Error + "The title must be less than 5 characters : ";
             }
+            //if phone no is blank
+            if (PhoneNo.Length == 0)
+            {
+                //record the error
+                Error = Error + "The phone number may not be blank : ";
+            }
+            //if phone no is less than 10 characters
+            if (PhoneNo.Length < 10)
+            {
+                //record the error
+                Error = Error + "The phone number must be atleast 10 characters : ";
+            }
+            //if phone no is greater than 12 characters
+            if (PhoneNo.Length > 12)
+            {
+                //record the error
+                Error = Error + "The phone number must be less than 13 characters : ";
+            }
+
             try
             {
                 //copy the dateAdded value to the DateTemp variable
@@ -227,31 +246,34 @@ namespace PrintingClasses
                 Error = Error + "The forename must be less than 25 characters : ";
             }
 
-            // if the forename blank
+            // if the lastname blank
             if (lastName.Length == 0)
             {
                 //record the error
                 Error = Error + "The fore name may not be blank : ";
             }
 
-            // if the forename is too long
+            // if the lastname is too long
             if (lastName.Length > 25)
             {
                 Error = Error + "The forename must be less than 25 characters : ";
             }
 
-            // if the forename blank
+            // if the email blank
             if (email.Length == 0)
             {
                 //record the error
                 Error = Error + "The email may not be blank : ";
             }
 
-            // if the forename is too long
+            // if the email is too long
             if (email.Length > 50)
             {
                 Error = Error + "The email must be less than 50 characters : ";
             }
+
+
+
             //return any error message
             return Error;
         }
