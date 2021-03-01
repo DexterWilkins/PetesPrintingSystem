@@ -16,8 +16,28 @@ namespace Printing_Testing
             Assert.IsNotNull(AnOrder);
         }
 
+        [TestMethod]
+        public void ActivePropertyOk()
+        {
+            clsOrder AnOrder = new clsOrder();
 
+            Boolean TestData = true;
 
+            AnOrder.Active = TestData;
 
+            Assert.AreEqual(AnOrder.Active, TestData);
+        }
+
+        [TestMethod]
+        public void DeliveryDatePropertyOk()
+        {
+            clsOrder AnOrder = new clsOrder();
+
+            DateTime TestData = DateTime.Now.Date;
+
+            AnOrder.DeliveryDate = TestData;
+
+            Assert.AreEqual(AnOrder.DeliveryDate, TestData);
+        }
     }
 }
