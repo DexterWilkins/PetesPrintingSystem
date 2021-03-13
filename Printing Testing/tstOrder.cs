@@ -29,7 +29,7 @@ namespace Printing_Testing
         }
 
         [TestMethod]
-        public void DeliveryDatePropertyOk()
+        public void DeliveryDateOk()
         {
             clsOrder AnOrder = new clsOrder();
 
@@ -40,6 +40,40 @@ namespace Printing_Testing
             Assert.AreEqual(AnOrder.DeliveryDate, TestData);
         }
 
-       
+        [TestMethod]
+        public void OrderDateOk()
+        {
+            clsOrder AnOrder = new clsOrder();
+
+            DateTime TestData = DateTime.Now.Date;
+
+            AnOrder.OrderDate = TestData;
+
+            Assert.AreEqual(AnOrder.OrderDate, TestData);
+        }
+
+        [TestMethod]
+        public void OrderNoOk()
+        {
+            clsOrder AnOrder = new clsOrder();
+
+            Int32 TestData = 1;
+
+            AnOrder.OrderNo = TestData;
+
+            Assert.AreEqual(AnOrder.OrderNo, TestData);
+        }
+
+        [TestMethod]
+        public void PartNoOk()
+        {
+            clsOrder AnOrder = new clsOrder();
+
+            Int32 TestData = 1;
+
+            AnOrder.PartNo = TestData;
+
+            Assert.AreEqual(AnOrder.PartNo, TestData);
+        }
     }
 }
