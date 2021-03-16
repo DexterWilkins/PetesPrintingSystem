@@ -1,5 +1,6 @@
 ﻿using System;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
+using PrintingClasses;
 
 namespace Printing_Testing
 {
@@ -9,7 +10,9 @@ namespace Printing_Testing
         [TestMethod]
         public void InstanceOk()
         {
+            clsOrderLine AnOrderLine = new clsOrderLine();
 
+            Assert.IsNotNull(AnOrderLine);
         }
     }
 }

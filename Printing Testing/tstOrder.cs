@@ -17,18 +17,6 @@ namespace Printing_Testing
         }
 
         [TestMethod]
-        public void ActivePropertyOk()
-        {
-            clsOrder AnOrder = new clsOrder();
-
-            Boolean TestData = true;
-
-            AnOrder.Active = TestData;
-
-            Assert.AreEqual(AnOrder.Active, TestData);
-        }
-
-        [TestMethod]
         public void DeliveryDateOk()
         {
             clsOrder AnOrder = new clsOrder();
@@ -74,6 +62,40 @@ namespace Printing_Testing
             AnOrder.PartNo = TestData;
 
             Assert.AreEqual(AnOrder.PartNo, TestData);
+        }
+
+        [TestMethod]
+        public void FindMethodOK()
+        {
+            clsOrder AnOrder = new clsOrder();
+
+            Boolean Found = false;
+
+            Int32 OrderNo = 32;
+
+            Found = AnOrder.Find(OrderNo);
+
+            Assert.IsTrue(Found);
+        }
+
+        [TestMethod]
+        public void TestOrderNoFound()
+        {
+            clsOrder AnOrder = new clsOrder();
+
+            Boolean Found = false;
+
+            Boolean OK = true;
+
+            Int32 OrderNo = 21;
+
+            Found = AnOrder.Find(OrderNo);
+
+            if (AnOrder.OrderNo != 21)
+            {
+                OK = false;
+            }
+            Assert.IsTrue(OK);
         }
     }
 }
