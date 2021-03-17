@@ -50,7 +50,7 @@
             <br />
             <br />
             <asp:Button ID="btnOK" runat="server" CssClass="auto-style2" OnClick="btnOK_Click" Text="OK" Width="54px" />
-            <asp:Button ID="btnCancel" runat="server" CssClass="auto-style3" Text="Cancel" Width="67px" />
+            <asp:Button ID="btnCancel" runat="server" CssClass="auto-style3" Text="Cancel" Width="67px" OnClick="btnCancel_Click" />
         </div>
         <br />
         <br />

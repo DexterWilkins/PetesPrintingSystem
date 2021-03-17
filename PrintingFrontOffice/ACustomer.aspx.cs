@@ -8,56 +8,35 @@ using PrintingClasses;
 
 public partial class ACustomer : System.Web.UI.Page
 {
+    Int32 CustomerNo;
+
     protected void Page_Load(object sender, EventArgs e)
     {
-
+        //get the number of the customer to be processed
+        CustomerNo = Convert.ToInt32(Session["CustomerNo"]);
+        if (IsPostBack == false)
+        {
+            //populate the list of customers
+            //DisplayCustomers();
+        }
     }
 
     protected void btnOK_Click(object sender, EventArgs e)
-    {        
-        //create a new instance of clsCustomer
-        clsCustomer ACustomer = new clsCustomer();
-        //capture the title
-        string Title = txtTitle.Text;
-        //capture the forename
-        string ForeName = txtForeName.Text;
-        //capture the LastName
-        string LastName = txtLastName.Text;
-        //capture the email
-        string Email = txtCustomerEmail.Text;
-        //capture the phone no
-        string PhoneNo = txtPhoneNo.Text;
-        //capture the date added
-        string DateAdded = txtDateAdded.Text;
-        //variable to store any error messages
-        string Error = "";
-        //validate the data
-        Error = ACustomer.Valid(Title, ForeName, LastName, Email, PhoneNo, DateAdded);
-        if (Error == "")
+    {
+        if (CustomerNo == -1)
         {
-            //capture the title
-            ACustomer.Title = Title;
-            //capture the forename
-            ACustomer.ForeName = ForeName;
-            //capture the last name
-            ACustomer.LastName = LastName;
-            //capture the email
-            ACustomer.Email = Email;
-            //capture the phone no
-            ACustomer.PhoneNo = Convert.ToInt32(PhoneNo);
-            //capture the date added
-            ACustomer.DateAdded = Convert.ToDateTime(DateAdded);
-            //store the customer in the session object
-            Session["ACustomer"] = ACustomer;
-            //redirect to the viewer oage
-            Response.Write("CustomerViewer.aspx");
+            //add the new record
+            Add();
+            //all done so redirect back to the main page
+            Response.Redirect("CustomerDefault.aspx");
         }
         else
         {
-            //display the error message
-            lblError.Text = Error;
+            //update the record
+            Update();
+            //all done so redirect back to the main page
+            Response.Redirect("CustomerDefault.aspx");
         }
-
     }
 
     protected void btnFind_Click(object sender, EventArgs e)
@@ -86,7 +65,70 @@ public partial class ACustomer : System.Web.UI.Page
 
         
 
+     }
+
+    void Add()
+    {
+        //create an instance of the address book
+        clsCustomerCollection Customers = new clsCustomerCollection();
+        //validate the data on the web form
+        String Error = Customers.ThisCustomer.Valid(txtTitle.Text, txtForeName.Text, txtCustomerEmail.Text, txtPhoneNo.Text, txtDateAdded.Text);
+        //if the data is OK then add it to the object
+        if (Error == "")
+        {
+            //get the data entered by the user
+            Customers.ThisCustomer.Title = txtTitle.Text;
+            Customers.ThisCustomer.ForeName = txtForeName.Text;
+            Customers.ThisCustomer.LastName = txtLastName.Text;
+            Customers.ThisCustomer.Email = txtCustomerEmail.Text;
+            Customers.ThisCustomer.PhoneNo = Convert.ToInt32(txtPhoneNo.Text);
+            Customers.ThisCustomer.DateAdded = Convert.ToDateTime(txtDateAdded.Text);
+            Customers.ThisCustomer.Active = checkboxActive.Checked;
+            //add the record
+            Customers.Add();
+        }
+        else
+        {
+            //report an error
+            lblError.Text = "There were problems with the data entered " + Error;
         }
 
-
     }
+
+    void Update()
+    {
+        //create an instance of the address book
+        clsCustomerCollection Customers = new clsCustomerCollection();
+        //validate the data on the web form
+        String Error = Customers.ThisCustomer.Valid(txtTitle.Text, txtForeName.Text, txtCustomerEmail.Text, txtPhoneNo.Text, txtDateAdded.Text);
+        //if the data is OK then add it to the object
+        if (Error == "")
+        {
+            //get the data entered by the user
+            Customers.ThisCustomer.Title = txtTitle.Text;
+            Customers.ThisCustomer.ForeName = txtForeName.Text;
+            Customers.ThisCustomer.LastName = txtLastName.Text;
+            Customers.ThisCustomer.Email = txtCustomerEmail.Text;
+            Customers.ThisCustomer.PhoneNo = Convert.ToInt32(txtPhoneNo.Text);
+            Customers.ThisCustomer.DateAdded = Convert.ToDateTime(txtDateAdded.Text);
+            Customers.ThisCustomer.Active = checkboxActive.Checked;
+            //update the record
+            Customers.Update();
+            //all done so redirect back to the main page
+            Response.Redirect("CustomerDefault");
+        }
+        else
+        {
+            //report an error
+            lblError.Text = "There were problems with the data entered " + Error;
+        }
+    }
+
+
+
+    protected void btnCancel_Click(object sender, EventArgs e)
+    {
+        //all done so redirect back to the main page
+        Response.Redirect("CustomerDefault.aspx");
+    }
+}
