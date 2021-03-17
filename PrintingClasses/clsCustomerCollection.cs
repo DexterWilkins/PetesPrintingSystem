@@ -7,6 +7,9 @@ namespace PrintingClasses
     {
         //private data member for the list
         List<clsCustomer> mCustomerList = new List<clsCustomer>();
+        //private data member thiscustomer
+        clsCustomer mThisCustomer = new clsCustomer();
+        
         //public property for the customer list
         public List<clsCustomer> CustomerList
         {
@@ -70,6 +73,38 @@ namespace PrintingClasses
             }
         }
 
-        public clsCustomer ThisCustomer { get; set; }
+        //public property for ThisCustomer
+        public clsCustomer ThisCustomer
+        {
+            get
+            {
+                //return the private data
+                return mThisCustomer;
+            }
+            set
+            {
+                //set the private data
+                mThisCustomer = value;
+            }
+        }
+
+
+        public int Add()
+        {
+            //adds a new record to the database based on the values of mThisCustomer
+            //connect to the database
+            clsDataConnection DB = new clsDataConnection();
+            //set the parameters for the stored procedure
+            DB.AddParameter("@Title", mThisCustomer.Title);
+            DB.AddParameter("@ForeName", mThisCustomer.ForeName);
+            DB.AddParameter("@LastName", mThisCustomer.LastName);
+            DB.AddParameter("@DateAdded", mThisCustomer.DateAdded);
+            DB.AddParameter("@PhoneNo", mThisCustomer.PhoneNo);
+            DB.AddParameter("@CustomerEmail", mThisCustomer.Email);
+            DB.AddParameter("@Active", mThisCustomer.Active);
+            //execute the query returning the primary key value
+            return DB.Execute("sproc_tblCustomer_Insert");
+        }
+
     }
 }
