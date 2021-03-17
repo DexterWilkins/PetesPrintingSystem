@@ -84,5 +84,9 @@ public partial class ACustomer : System.Web.UI.Page
             txtPhoneNo.Text = ACustomer.PhoneNo.ToString();
         }
 
+        
+
+        }
+
+
     }
-}
