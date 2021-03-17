@@ -106,5 +106,33 @@ namespace PrintingClasses
             return DB.Execute("sproc_tblCustomer_Insert");
         }
 
+        public void Delete()
+        {
+            //connect to the database
+            clsDataConnection DB = new clsDataConnection();
+            //set the parameters for the stored procedure
+            DB.AddParameter("@CustomerNo", mThisCustomer.CustomerNo);
+            //executre the stored procedure
+            DB.Execute("sproc_tblCustomer_Delete");
+        }
+
+
+        public void Update()
+        {
+            //connect to the database
+            clsDataConnection DB = new clsDataConnection();
+            //set the parameters for the stored procedure
+            DB.AddParameter("@CustomerNo", mThisCustomer.CustomerNo);
+            DB.AddParameter("@Title", mThisCustomer.Title);
+            DB.AddParameter("@ForeName", mThisCustomer.ForeName);
+            DB.AddParameter("@LastName", mThisCustomer.LastName);
+            DB.AddParameter("@DateAdded", mThisCustomer.DateAdded);
+            DB.AddParameter("@PhoneNo", mThisCustomer.PhoneNo);
+            DB.AddParameter("@CustomerEmail", mThisCustomer.Email);
+            DB.AddParameter("@Active", mThisCustomer.Active);
+            //execute the stored procedure
+            DB.Execute("sproc_tblCustomer_Update");
+        }
+        
     }
 }

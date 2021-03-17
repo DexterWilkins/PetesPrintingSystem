@@ -19,7 +19,7 @@
     <form id="form1" runat="server">
         <div>
         </div>
-        <asp:ListBox ID="ListBox1" runat="server" CssClass="auto-style2" Height="239px" Width="487px"></asp:ListBox>
+        <asp:ListBox ID="lstCustomers" runat="server" CssClass="auto-style2" Height="239px" Width="487px"></asp:ListBox>
         <p>
             <asp:Label ID="lblError" runat="server"></asp:Label>
         </p>
@@ -32,8 +32,8 @@
         <br />
         <br />
         <asp:Button ID="btnAdd" runat="server" CssClass="auto-style4" OnClick="btnAdd_Click" Text="Add" Width="49px" />
-        <asp:Button ID="btnEdit" runat="server" CssClass="auto-style5" Text="Edit" Width="51px" />
-        <asp:Button ID="btnDelete" runat="server" Text="Delete" />
+        <asp:Button ID="btnEdit" runat="server" CssClass="auto-style5" Text="Edit" Width="51px" OnClick="btnEdit_Click" />
+        <asp:Button ID="btnDelete" runat="server" Text="Delete" OnClick="btnDelete_Click" />
     </form>
 </body>
 </html>
