@@ -230,5 +230,41 @@ namespace Printing_Testing
             Assert.AreEqual(0, FilteredCustomers.Count);
         }
 
+        [TestMethod]
+        public void ReportByLastNameTestDataFound()
+        {
+            //create an instance of the filtered data
+            clsCustomerCollection FilteredCustomers = new clsCustomerCollection();
+            //var to store outcome
+            Boolean OK = true;
+            //apply a last name that doesnt exist
+            FilteredCustomers.ReportByLastName("Smith");
+            //check that the correct number of records are found
+            if (FilteredCustomers.Count == 3)
+            {
+                //check that the first record is ID 2
+                if (FilteredCustomers.CustomerList[0].CustomerNo != 2)
+                {
+                    OK = false;
+                }
+                //check that the first record is ID 3
+                if (FilteredCustomers.CustomerList[1].CustomerNo != 3)
+                {
+                    OK = false;
+                }
+                //check that the first record is ID 6
+                if (FilteredCustomers.CustomerList[2].CustomerNo != 6)
+                {
+                    OK = false;
+                }
+            }
+            else
+            {
+                OK = false;
+            }
+            //test to see that there are no records
+            Assert.IsTrue(OK);
+        }
+
     }
 }
