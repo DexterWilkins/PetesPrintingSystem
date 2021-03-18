@@ -206,6 +206,29 @@ namespace Printing_Testing
         }
 
 
+        [TestMethod]
+        public void ReportByLastNameMethodOK()
+        {
+            //create an instance of the class containing unfiltered results
+            clsCustomerCollection AllCustomers = new clsCustomerCollection();
+            //create an instance of the filtered data
+            clsCustomerCollection FilteredCustomers = new clsCustomerCollection();
+            //apply a blank string 
+            FilteredCustomers.ReportByLastName("");
+            //test to see that the two values are the same
+            Assert.AreEqual(AllCustomers.Count, FilteredCustomers.Count);
+        }
+
+        [TestMethod]
+        public void ReportByLastNameNoneFound()
+        {
+            //create an instance of the filtered data
+            clsCustomerCollection FilteredCustomers = new clsCustomerCollection();
+            //apply a blank string 
+            FilteredCustomers.ReportByLastName("xxxxxxxx");
+            //test to see that the two values are the same
+            Assert.AreEqual(0, FilteredCustomers.Count);
+        }
 
     }
 }

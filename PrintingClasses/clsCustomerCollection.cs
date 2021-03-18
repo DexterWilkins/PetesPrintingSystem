@@ -134,7 +134,9 @@ namespace PrintingClasses
             DB.Execute("sproc_tblCustomer_Update");
         }
 
-
-        
+        public void ReportByLastName(string LastName)
+        {
+            //filters the records based on a full or partial last name
+        }
     }
 }

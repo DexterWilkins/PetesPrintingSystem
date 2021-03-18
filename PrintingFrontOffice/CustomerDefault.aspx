@@ -19,7 +19,8 @@
     <form id="form1" runat="server">
         <div>
         </div>
-        <asp:ListBox ID="lstCustomers" runat="server" CssClass="auto-style2" Height="239px" Width="487px" OnSelectedIndexChanged="lstCustomers_SelectedIndexChanged"></asp:ListBox>
+        <asp:ListBox ID="lstCustomers" runat="server" CssClass="auto-style2" Height="239px" Width="487px" OnSelectedIndexChanged="lstCustomers_SelectedIndexChanged" DataSourceID="SqlDataSource1" DataTextField="ForeName" DataValueField="LastName"></asp:ListBox>
+        <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:CustomerDatabaseConnectionString %>" SelectCommand="SELECT [CustomerNo], [Title], [ForeName], [LastName] FROM [tblCustomer]"></asp:SqlDataSource>
         <p>
             <asp:Label ID="lblError" runat="server"></asp:Label>
         </p>
