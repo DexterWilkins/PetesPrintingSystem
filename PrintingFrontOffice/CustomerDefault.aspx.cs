@@ -62,4 +62,9 @@ public partial class CustomerDefault : System.Web.UI.Page
             lblError.Text = "Please select a record to edit from the list";
         }
     }
+
+    protected void lstCustomers_SelectedIndexChanged(object sender, EventArgs e)
+    {
+
+    }
 }

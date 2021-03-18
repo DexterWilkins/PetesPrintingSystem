@@ -16,13 +16,60 @@ public partial class ACustomer : System.Web.UI.Page
         CustomerNo = Convert.ToInt32(Session["CustomerNo"]);
         if (IsPostBack == false)
         {
-            //populate the list of customers
-            //DisplayCustomers();
+           if (CustomerNo != -1)
+            {
+                //display the current data for the record
+                DisplayCustomers();
+            }
         }
     }
 
     protected void btnOK_Click(object sender, EventArgs e)
     {
+
+        //create a new instance of clsCustomer
+        clsCustomer ACustomer = new clsCustomer();
+        //capture the title
+        string Title = txtTitle.Text;
+        //capture the forename
+        string ForeName = txtForeName.Text;
+        //capture the LastName
+        string LastName = txtLastName.Text;
+        //capture the email
+        string Email = txtCustomerEmail.Text;
+        //capture the phone no
+        string PhoneNo = txtPhoneNo.Text;
+        //capture the date added
+        string DateAdded = txtDateAdded.Text;
+        //variable to store any error messages
+        string Error = "";
+        //validate the data
+        Error = ACustomer.Valid(Title, ForeName, LastName, Email, PhoneNo, DateAdded);
+        if (Error == "")
+        {
+            //capture the title
+            ACustomer.Title = Title;
+            //capture the forename
+            ACustomer.ForeName = ForeName;
+            //capture the last name
+            ACustomer.LastName = LastName;
+            //capture the email
+            ACustomer.Email = Email;
+            //capture the phone no
+            ACustomer.PhoneNo = Convert.ToInt32(PhoneNo);
+            //capture the date added
+            ACustomer.DateAdded = Convert.ToDateTime(DateAdded);
+            //store the customer in the session object
+            Session["ACustomer"] = ACustomer;
+            //redirect to the viewer oage
+            Response.Write("CustomerViewer.aspx");
+        }
+        else
+        {
+            //display the error message
+            lblError.Text = Error;
+        }
+
         if (CustomerNo == -1)
         {
             //add the new record
@@ -37,6 +84,7 @@ public partial class ACustomer : System.Web.UI.Page
             //all done so redirect back to the main page
             Response.Redirect("CustomerDefault.aspx");
         }
+
     }
 
     protected void btnFind_Click(object sender, EventArgs e)
@@ -72,7 +120,7 @@ public partial class ACustomer : System.Web.UI.Page
         //create an instance of the address book
         clsCustomerCollection Customers = new clsCustomerCollection();
         //validate the data on the web form
-        String Error = Customers.ThisCustomer.Valid(txtTitle.Text, txtForeName.Text, txtCustomerEmail.Text, txtPhoneNo.Text, txtDateAdded.Text);
+        String Error = Customers.ThisCustomer.Valid(txtTitle.Text, txtForeName.Text, txtLastName.Text, txtCustomerEmail.Text, txtPhoneNo.Text, txtDateAdded.Text);
         //if the data is OK then add it to the object
         if (Error == "")
         {
@@ -100,7 +148,7 @@ public partial class ACustomer : System.Web.UI.Page
         //create an instance of the address book
         clsCustomerCollection Customers = new clsCustomerCollection();
         //validate the data on the web form
-        String Error = Customers.ThisCustomer.Valid(txtTitle.Text, txtForeName.Text, txtCustomerEmail.Text, txtPhoneNo.Text, txtDateAdded.Text);
+        String Error = Customers.ThisCustomer.Valid(txtTitle.Text, txtForeName.Text, txtLastName.Text, txtCustomerEmail.Text, txtPhoneNo.Text, txtDateAdded.Text);
         //if the data is OK then add it to the object
         if (Error == "")
         {
@@ -122,6 +170,23 @@ public partial class ACustomer : System.Web.UI.Page
             //report an error
             lblError.Text = "There were problems with the data entered " + Error;
         }
+    }
+
+    void DisplayCustomers()
+    {
+        //create an instance of the customers list
+        clsCustomerCollection Customers = new clsCustomerCollection();
+        //find the record to update
+        Customers.ThisCustomer.Find(CustomerNo);
+        //display the data for the record
+        txtTitle.Text = Customers.ThisCustomer.Title;
+        txtForeName.Text = Customers.ThisCustomer.ForeName;
+        txtLastName.Text = Customers.ThisCustomer.LastName;
+        txtCustomerEmail.Text = Customers.ThisCustomer.Email;
+        txtPhoneNo.Text = Customers.ThisCustomer.PhoneNo.ToString();
+        txtDateAdded.Text = Customers.ThisCustomer.DateAdded.ToString();
+        checkboxActive.Checked = Customers.ThisCustomer.Active;
+
     }
 
 

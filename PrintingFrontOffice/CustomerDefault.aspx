@@ -19,13 +19,13 @@
     <form id="form1" runat="server">
         <div>
         </div>
-        <asp:ListBox ID="lstCustomers" runat="server" CssClass="auto-style2" Height="239px" Width="487px"></asp:ListBox>
+        <asp:ListBox ID="lstCustomers" runat="server" CssClass="auto-style2" Height="239px" Width="487px" OnSelectedIndexChanged="lstCustomers_SelectedIndexChanged"></asp:ListBox>
         <p>
             <asp:Label ID="lblError" runat="server"></asp:Label>
         </p>
         <asp:Label ID="Label2" runat="server" Text="Please Enter a Last Name"></asp:Label>
         <p>
-            <asp:TextBox ID="TextBox1" runat="server"></asp:TextBox>
+            <asp:TextBox ID="txtLastNameFilter" runat="server"></asp:TextBox>
         </p>
         <asp:Button ID="btnApply" runat="server" CssClass="auto-style3" Text="Apply" Width="85px" />
         <asp:Button ID="btnDisplayAll" runat="server" Text="Display All" />

@@ -123,10 +123,7 @@ namespace PrintingClasses
             }
         }
 
-        public string Valid(string text1, string text2, string text3, string text4, string text5)
-        {
-            throw new NotImplementedException();
-        }
+        
 
         //private data member for the customer no property
         private Boolean mActive;
