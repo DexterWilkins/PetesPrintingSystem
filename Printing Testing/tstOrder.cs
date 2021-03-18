@@ -97,5 +97,67 @@ namespace Printing_Testing
             }
             Assert.IsTrue(OK);
         }
+
+        [TestMethod]
+        public void TestDeliveryDateFound()
+        {
+            clsOrder AnOrder = new clsOrder();
+
+            Boolean Found = false;
+
+            Boolean OK = true;
+
+            Int32 OrderNo = 21;
+
+            Found = AnOrder.Find(OrderNo);
+
+            if (AnOrder.DeliveryDate != Convert.ToDateTime("16/09/2015"))
+            {
+                OK = false;
+            }
+            Assert.IsTrue(OK);
+        }
+
+        [TestMethod]
+        public void TestOrderDateFound()
+        {
+            clsOrder AnOrder = new clsOrder();
+
+            Boolean Found = false;
+
+            Boolean OK = true;
+
+            Int32 OrderNo = 21;
+
+            Found = AnOrder.Find(OrderNo);
+
+            if (AnOrder.OrderDate != Convert.ToDateTime("16/09/2015"))
+            {
+                OK = false;
+            }
+            Assert.IsTrue(OK);
+        }
+
+        [TestMethod]
+        public void TestPartNoFound()
+        {
+            clsOrder AnOrder = new clsOrder();
+
+            Boolean Found = false;
+
+            Boolean OK = true;
+
+            Int32 OrderNo = 21;
+
+            Found = AnOrder.Find(OrderNo);
+
+            if (AnOrder.PartNo != 13)
+            {
+                OK = false;
+            }
+            Assert.IsTrue(OK);
+        }
+
+
     }
 }
