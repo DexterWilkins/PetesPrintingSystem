@@ -172,6 +172,17 @@ namespace Printing_Testing
             Assert.IsTrue(OK);
         }
 
-
+        [TestMethod]
+        public void VaildMethodOK()
+        {
+            //create an instance of the class we want to create
+            clsOrder AnOrder = new clsOrder();
+            //string variable to store
+            string Error = "";
+            //invoke the method
+            Error = AnOrder.Vaild(DeliveryDate, DateDeilvered, PartNo);
+            //test to see that the result is correct
+            Assert.AreEqual(Error, "");
+        }
     }
 }
