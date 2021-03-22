@@ -36,6 +36,7 @@
             <asp:Label ID="lblError" runat="server" CssClass="auto-style3"></asp:Label>
         </p>
         <asp:Button ID="btnCancel" runat="server" CssClass="auto-style2" Text="Cancel" />
+        <asp:Button ID="btnFind" runat="server" OnClick="btnFind_Click" style="margin-bottom: 2px" Text="Find" />
     </form>
 </body>
 </html>

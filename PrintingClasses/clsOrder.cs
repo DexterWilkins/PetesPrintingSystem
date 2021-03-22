@@ -88,6 +88,9 @@ namespace PrintingClasses
            
         }
 
-
+        public string Vaild(object deliveryDate, object dateDeilvered, object partNo)
+        {
+            return "";
+        }
     }
 }
