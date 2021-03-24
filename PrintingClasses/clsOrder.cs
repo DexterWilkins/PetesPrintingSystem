@@ -88,9 +88,29 @@ namespace PrintingClasses
            
         }
 
-        public string Vaild(object deliveryDate, object dateDeilvered, object partNo)
-        {
-            return "";
-        }
+       public string Vaild(string deliveryDate, string OrderDate, string partNo)
+       {
+            //create a string variableto store the Error
+            String Error = "";
+
+            DateTime DateTemp;
+            //if the Deliverydate is blank
+            DateTemp = Convert.ToDateTime(DeliveryDate);
+            if (DateTemp < DateTime.Now.Date)
+            {
+                Error = Error + "The Date Cannont be in the past : ";
+            }
+            DateTemp = Convert.ToDateTime(OrderDate);
+            if (DateTemp < DateTime.Now.Date)
+            {
+                Error = Error + "The Date Cannont be in the past : ";
+            }
+            /*if ()
+            {
+                
+            }*/
+            //Return  any Error Message
+            return Error;
+       }
     }
 }

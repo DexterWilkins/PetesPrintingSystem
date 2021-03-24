@@ -7,6 +7,11 @@ namespace Printing_Testing
     [TestClass]
     public class tstOrder
     {
+        //good test data
+        //create some test data to pass
+        string DeliveryDate = "";
+        string OrderDate = "";
+        string PartNo = "";
         
         [TestMethod]
         public void InstanceOk()
@@ -178,11 +183,83 @@ namespace Printing_Testing
             //create an instance of the class we want to create
             clsOrder AnOrder = new clsOrder();
             //string variable to store
-            string Error = "";
+            String Error = "";
             //invoke the method
-            Error = AnOrder.Vaild(DeliveryDate, DateDeilvered, PartNo);
+            Error = AnOrder.Vaild(DeliveryDate, OrderDate, PartNo);
             //test to see that the result is correct
             Assert.AreEqual(Error, "");
+        }
+
+        [TestMethod]
+        public void DeliveryDateMinOne()
+        {
+            //create an instance of the class we want to create
+            clsOrder AnOrder = new clsOrder();
+            //string variable to store
+            String Error = "";
+            //create some test data to pass the method
+            string DeliveryDate = "";
+            //invoke the method
+            Error = AnOrder.Vaild(DeliveryDate, OrderDate, PartNo);
+            //test to see that the result is correct
+            Assert.AreNotEqual(Error, "");
+        }
+
+        [TestMethod]
+        public void DeliverDateExtremeMin()
+        {
+            //create an instance of the class we want to create
+            clsOrder AnOrder = new clsOrder();
+            //string variable to store
+            String Error = "";
+            //create a variable to store the test data 
+            DateTime TestDate;
+            //set the date to todays date
+            TestDate = DateTime.Now.Date;
+            //change the date to whatever the date is less 100 years
+            TestDate = TestDate.AddYears(-100);
+            //create some test data to pass the method
+            string DeliveryDate = TestDate.ToString();
+            //invoke the method
+            Error = AnOrder.Vaild(DeliveryDate, OrderDate, PartNo);
+            //test to see that the result is correct
+            Assert.AreNotEqual(Error, "");
+        }
+
+        [TestMethod]
+        public void DeliverDateMinLessOne()
+        {
+            //create an instance of the class we want to create
+            clsOrder AnOrder = new clsOrder();
+            //string variable to store
+            String Error = "";
+            //create a variable to store the test data 
+            DateTime TestDate;
+            //set the date to todays date
+            TestDate = DateTime.Now.Date;
+            //change the date to whatever the date is less 100 years
+            TestDate = TestDate.AddYears(-1);
+            //create some test data to pass the method
+            string DeliveryDate = TestDate.ToString();
+            //invoke the method
+            Error = AnOrder.Vaild(DeliveryDate, OrderDate, PartNo);
+            //test to see that the result is correct
+            Assert.AreNotEqual(Error, "");
+        }
+
+        [TestMethod]
+        public void PartNoMinOne()
+        {
+            //create an instance of the class we want to create
+            clsOrder AnOrder = new clsOrder();
+            //string variable to store
+            string Error = "";
+            //create some test data to pass the method
+            string PartNo = "";
+            //invoke the method
+            Error = AnOrder.Vaild(DeliveryDate, OrderDate, PartNo);
+            //test to see that the result is correct
+            Assert.AreNotEqual(Error, "");
         }
     }
 }
