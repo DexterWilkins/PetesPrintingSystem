@@ -99,7 +99,7 @@
         <p>
             <asp:Label ID="lblOrderNo" runat="server" CssClass="auto-style4" Text="OrderNo"></asp:Label>
             <asp:TextBox ID="txtDeliveryDate" runat="server" CssClass="auto-style7"></asp:TextBox>
-            <asp:TextBox ID="txtPartNo" runat="server" CssClass="auto-style8" OnTextChanged="txtPartNo_TextChanged"></asp:TextBox>
+            
         </p>
         <p>
             <asp:Label ID="lblError" runat="server" CssClass="auto-style11"></asp:Label>
