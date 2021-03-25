@@ -10,4 +10,19 @@ public partial class _Default : System.Web.UI.Page
     {
 
     }
+
+    protected void btnCustomer_Click(object sender, EventArgs e)
+    {
+        Response.Redirect("CustomerDefault.aspx");
+    }
+
+    protected void btnOrderPart_Click(object sender, EventArgs e)
+    {
+        Response.Redirect("AOrder.aspx");
+    }
+
+    protected void btnStock_Click(object sender, EventArgs e)
+    {
+        Response.Redirect("Stock.aspx");
+    }
 }
