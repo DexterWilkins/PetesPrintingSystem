@@ -50,12 +50,6 @@
             z-index: 1;
             bottom: 462px;
         }
-        .auto-style8 {
-            position: absolute;
-            top: 152px;
-            left: 114px;
-            z-index: 1;
-        }
         .auto-style9 {
             position: absolute;
             top: 80px;
@@ -78,6 +72,12 @@
             position: absolute;
             top: 154px;
             left: 23px;
+            z-index: 1;
+        }
+        .auto-style13 {
+            position: absolute;
+            top: 155px;
+            left: 114px;
             z-index: 1;
         }
     </style>
@@ -103,6 +103,7 @@
         </p>
         <p>
             <asp:Label ID="lblError" runat="server" CssClass="auto-style11"></asp:Label>
+            <asp:TextBox ID="txtPartNo" runat="server" CssClass="auto-style13"></asp:TextBox>
         </p>
         <p>
             &nbsp;</p>
