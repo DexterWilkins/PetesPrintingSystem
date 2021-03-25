@@ -17,7 +17,7 @@ namespace Printing_Testing
         }
 
         [TestMethod]
-        public void StockDateAddedPropertyOK()
+        public void StockDateAddedOK()
         {
             //create an instance of the class I want to create
             clsStock stock = new clsStock();
@@ -30,7 +30,7 @@ namespace Printing_Testing
         }
 
         [TestMethod]
-        public void StockNoPropertyOK()
+        public void StockNoOK()
         {
             //create an instance of the class I want to create
             clsStock stock = new clsStock();
@@ -78,6 +78,109 @@ namespace Printing_Testing
             stock.InStock = TestData;
             //test to see that the two values are the same
             Assert.AreEqual(stock.InStock, TestData);
+        }
+
+        [TestMethod]
+        public void StockFindMethodOK()
+        {
+            //create an instance of the class I want to create
+            clsStock stock = new clsStock();
+            //boolean variable to store the result of the validation
+            Boolean Found = false;
+            //create some test data to use with the method
+            Int32 StockNo = 21;
+            //invoke the method
+            Found = stock.Find(StockNo);
+            //test to see if the result is true
+            Assert.IsTrue(Found);
+        }
+
+        [TestMethod]
+        public void StockNoFound()
+        {
+            //create an instance of the class I want to create
+            clsStock stock = new clsStock();
+            //boolean variable to store the result of the search
+            Boolean Found = false;
+            //boolean variable to record if data is okay
+            Boolean OK = true;
+            //create some test data to use with thte method
+            Int32 StockNo = 21;
+            //invoke the method
+            Found = stock.Find(StockNo);
+            //check the StockNo
+            if (stock.StockNo != 21)
+            {
+                OK = false;
+            }
+            //test to see that the result is correct
+            Assert.IsTrue(OK);
+        }
+
+        [TestMethod]
+        public void StockDateAddedFound()
+        {
+            //create an instance of the class I want to create
+            clsStock stock = new clsStock();
+            //boolean variable to store the result of the search
+            Boolean Found = false;
+            //boolean variable to record if data is okay
+            Boolean OK = true;
+            //create some test data to use with the method
+            Int32 StockNo = 21;
+            //invoke the method
+            Found = stock.Find(StockNo);
+            //check the property
+            if (stock.DateAdded != Convert.ToDateTime("16/09/2015"))
+            {
+                OK = false;
+            }
+            //test to see that the result is correct
+            Assert.IsTrue(OK);
+        }
+
+        [TestMethod]
+        public void StockDescriptionFound()
+        {
+            //create an instance of the class I want to create
+            clsStock stock = new clsStock();
+            //boolean variable to store the result of the search
+            Boolean Found = false;
+            //boolean variable to record if data is okay
+            Boolean OK = true;
+            //create some test data to use with the method
+            string StockDescription = "Part";
+            //invoke the method
+            Found = stock.Find(StockDescription);
+            //check the property
+            if (stock.StockDescription !="Part")
+            {
+                OK = false;
+            }
+            //test to see that the result is correct
+            Assert.IsTrue(OK);
+        }
+
+        [TestMethod]
+        public void StockLocationFound()
+        {
+            //create an instance of the class I want to create
+            clsStock stock = new clsStock();
+            //boolean variable to store the result of the search
+            Boolean Found = false;
+            //boolean variable to record if data is okay
+            Boolean OK = true;
+            //create some test data to use with the method
+            string StockLocation = "Warehouse";
+            //invoke the method
+            Found = stock.Find(StockLocation);
+            //check the property
+            if (stock.StockLocation !="Warehouse")
+            {
+                OK = false;
+            }
+            //test to see that the result is correct
+            Assert.IsTrue(OK);
         }
     }
 }
