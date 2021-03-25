@@ -67,4 +67,16 @@ public partial class CustomerDefault : System.Web.UI.Page
     {
 
     }
+
+    protected void btnDisplayAll_Click(object sender, EventArgs e)
+    {
+
+    }
+
+    protected void btnApply_Click(object sender, EventArgs e)
+    {
+        
+
+        
+    }
 }
