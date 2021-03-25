@@ -117,7 +117,7 @@ public partial class ACustomer : System.Web.UI.Page
 
     void Add()
     {
-        //create an instance of the address book
+        //create an instance of the customer class
         clsCustomerCollection Customers = new clsCustomerCollection();
         //validate the data on the web form
         String Error = Customers.ThisCustomer.Valid(txtTitle.Text, txtForeName.Text, txtLastName.Text, txtCustomerEmail.Text, txtPhoneNo.Text, txtDateAdded.Text);
@@ -145,7 +145,7 @@ public partial class ACustomer : System.Web.UI.Page
 
     void Update()
     {
-        //create an instance of the address book
+        //create an instance of the customer class
         clsCustomerCollection Customers = new clsCustomerCollection();
         //validate the data on the web form
         String Error = Customers.ThisCustomer.Valid(txtTitle.Text, txtForeName.Text, txtLastName.Text, txtCustomerEmail.Text, txtPhoneNo.Text, txtDateAdded.Text);
