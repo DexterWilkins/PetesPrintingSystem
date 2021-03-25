@@ -83,34 +83,74 @@ namespace PrintingClasses
             else
             {
                 return false;
-
             }
            
         }
 
        public string Vaild(string deliveryDate, string OrderDate, string partNo)
        {
-            //create a string variableto store the Error
+            //create a string variable to store the error
             String Error = "";
-
+            //create a temporary variable to store date values
             DateTime DateTemp;
-            //if the Deliverydate is blank
-            DateTemp = Convert.ToDateTime(DeliveryDate);
-            if (DateTemp < DateTime.Now.Date)
+            //if the HouseNo is blank
+           // if (PartNo.Length == 0)
             {
-                Error = Error + "The Date Cannont be in the past : ";
+                //record the error
+                Error = Error + "The part no may not be blank : ";
             }
-            DateTemp = Convert.ToDateTime(OrderDate);
-            if (DateTemp < DateTime.Now.Date)
+            //if the house no is greater than 6 characters
+           // if (PartNo.Length > 6)
             {
-                Error = Error + "The Date Cannont be in the past : ";
+                //record the error
+                Error = Error + "The part no must be less than 6 characters : ";
             }
-            /*if ()
+            try
             {
-                
-            }*/
-            //Return  any Error Message
+                //copy the dateAdded value to the DateTemp variable
+                DateTemp = Convert.ToDateTime(DeliveryDate);
+                if (DateTemp < DateTime.Now.Date)
+                {
+                    //record the error
+                    Error = Error + "The date cannot be in the past : ";
+                }
+                //check to see if the date is greater than today's date
+                if (DateTemp > DateTime.Now.Date)
+                {
+                    //record the error
+                    Error = Error + "The date cannot be in the future : ";
+                }
+            }
+            catch
+            {
+                //record the error
+                Error = Error + "The date was not a valid date : ";
+            }
+            try
+            {
+                //copy the dateAdded value to the DateTemp variable
+                DateTemp = Convert.ToDateTime(OrderDate);
+                if (DateTemp < DateTime.Now.Date)
+                {
+                    //record the error
+                    Error = Error + "The date cannot be in the past : ";
+                }
+                //check to see if the date is greater than today's date
+                if (DateTemp > DateTime.Now.Date)
+                {
+                    //record the error
+                    Error = Error + "The date cannot be in the future : ";
+                }
+            }
+            catch
+            {
+                //record the error
+                Error = Error + "The date was not a valid date : ";
+            }
+
+            //return any error messages
             return Error;
-       }
+
+        }
     }
 }
