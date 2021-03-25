@@ -88,7 +88,7 @@ namespace Printing_Testing
             //boolean variable to store the result of the validation
             Boolean Found = false;
             //create some test data to use with the method
-            Int32 StockNo = 21;
+            Int32 StockNo = 1;
             //invoke the method
             Found = stock.Find(StockNo);
             //test to see if the result is true
@@ -105,11 +105,11 @@ namespace Printing_Testing
             //boolean variable to record if data is okay
             Boolean OK = true;
             //create some test data to use with thte method
-            Int32 StockNo = 21;
+            Int32 StockNo = 1;
             //invoke the method
             Found = stock.Find(StockNo);
             //check the StockNo
-            if (stock.StockNo != 21)
+            if (stock.StockNo != 1)
             {
                 OK = false;
             }
@@ -127,7 +127,7 @@ namespace Printing_Testing
             //boolean variable to record if data is okay
             Boolean OK = true;
             //create some test data to use with the method
-            Int32 StockNo = 21;
+            Int32 StockNo = 1;
             //invoke the method
             Found = stock.Find(StockNo);
             //check the property
@@ -154,28 +154,6 @@ namespace Printing_Testing
             Found = stock.Find(StockDescription);
             //check the property
             if (stock.StockDescription !="Part")
-            {
-                OK = false;
-            }
-            //test to see that the result is correct
-            Assert.IsTrue(OK);
-        }
-
-        [TestMethod]
-        public void StockLocationFound()
-        {
-            //create an instance of the class I want to create
-            clsStock stock = new clsStock();
-            //boolean variable to store the result of the search
-            Boolean Found = false;
-            //boolean variable to record if data is okay
-            Boolean OK = true;
-            //create some test data to use with the method
-            string StockLocation = "Warehouse";
-            //invoke the method
-            Found = stock.Find(StockLocation);
-            //check the property
-            if (stock.StockLocation !="Warehouse")
             {
                 OK = false;
             }

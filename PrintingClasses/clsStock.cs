@@ -4,7 +4,7 @@ namespace PrintingClasses
 {
     public class clsStock
     {
-        public bool Active { get; set; }
+
         private DateTime mDateAdded;
         public DateTime DateAdded
         {
@@ -19,6 +19,7 @@ namespace PrintingClasses
                 mDateAdded = value;
             }
         }
+
         //StockNo private member variable
         private Int32 mStockNo;
         //StockNo public properly
@@ -35,6 +36,7 @@ namespace PrintingClasses
                 mStockNo = value;
             }
         }
+
         //StockDescription private member variable
         private string mStockDescription;
         //StockDescription public property
@@ -51,6 +53,7 @@ namespace PrintingClasses
                 mStockDescription = value;
             }
         }
+
         //StockLocation private member variable
         private string mStockLocation;
         //StockLocation public property
@@ -67,24 +70,78 @@ namespace PrintingClasses
                 mStockLocation = value;
             }
         }
-        public bool InStock { get; set; }
+
+        //InStock private member variable
+        private bool mInStock;
+        //InStock public property
+        public bool InStock
+        {
+            get
+            {
+                //this line of code sends data out of the property
+                return mInStock;
+            }
+            set
+            {
+                //this line of code allows data into the property
+                mInStock = value;
+            }
+        }
 
         public bool Find(int stockNo)
         {
-            //set the private data members to the test data value
-            mStockNo = 21;
-            mDateAdded = Convert.ToDateTime("16/9/2015");
-            //always return true
-            return true;
+            //create an instance of the data connection
+            clsDataConnection DB = new clsDataConnection();
+            //add the parameter for the StockNo to search for
+            DB.AddParameter("@StockNo", stockNo);
+            //execute the stored procedure
+            DB.Execute("sproc_tblStock_FilterByStockNo");
+            //if one record is found
+            if (DB.Count == 1)
+            {
+                //copy the data from the data base to the private data members
+                mStockNo = Convert.ToInt32(DB.DataTable.Rows[0]["StockNo"]);
+                mStockDescription = Convert.ToString(DB.DataTable.Rows[0]["StockDescription"]);
+                mStockLocation = Convert.ToString(DB.DataTable.Rows[0]["StockLocation"]);
+                mDateAdded = Convert.ToDateTime(DB.DataTable.Rows[0]["DateAdded"]);
+                mInStock = Convert.ToBoolean(DB.DataTable.Rows[0]["InStock"]);
+                //return that everything is okay
+                return true;
+            }
+            //if no record was found
+            else
+            {
+                //return false
+                return false;
+            }
         }
 
         public bool Find(string stockDescription)
         {
-            //set the private data members to the test data value
-            mStockDescription = "Part";
-            mStockLocation = "Warehouse";
-            //always return true
-            return true;
+            //create an instance of the data connection
+            clsDataConnection DB = new clsDataConnection();
+            //add the parameter for the StockNo to search for
+            DB.AddParameter("@StockDescription", stockDescription);
+            //execute the stored procedure
+            DB.Execute("sproc_tblStock_FilterByStockDescription");
+            //if one record is found
+            if (DB.Count == 1)
+            {
+                //copy the data from the data base to the private data members
+                mStockNo = Convert.ToInt32(DB.DataTable.Rows[0]["StockNo"]);
+                mStockDescription = Convert.ToString(DB.DataTable.Rows[0]["StockDescription"]);
+                mStockLocation = Convert.ToString(DB.DataTable.Rows[0]["StockLocation"]);
+                mDateAdded = Convert.ToDateTime(DB.DataTable.Rows[0]["DateAdded"]);
+                mInStock = Convert.ToBoolean(DB.DataTable.Rows[0]["InStock"]);
+                //return that everything is okay
+                return true;
+            }
+            //if no record was found
+            else
+            {
+                //return false
+                return false;
+            }
         }
-    }
+    } 
 }
