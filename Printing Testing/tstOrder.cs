@@ -755,16 +755,7 @@ namespace Printing_Testing
             Assert.AreNotEqual(Error, "");
         }
 
-        [TestMethod]
-        public void AddMethodOK()
-        {
-            //create an instance of the class we want to create
-            clsOrder AnOrder = new clsOrder();
-            //string variable to store
-
-            //test to see that the result is correct
-           // Assert.AreEqual;
-        }
+        
     }
    
 }
