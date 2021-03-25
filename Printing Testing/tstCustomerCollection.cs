@@ -238,25 +238,20 @@ namespace Printing_Testing
             //var to store outcome
             Boolean OK = true;
             //apply a last name that doesnt exist
-            FilteredCustomers.ReportByLastName("Smith");
+            FilteredCustomers.ReportByLastName("Grass");
             //check that the correct number of records are found
-            if (FilteredCustomers.Count == 3)
+            if (FilteredCustomers.Count == 2)
             {
-                //check that the first record is ID 2
-                if (FilteredCustomers.CustomerList[0].CustomerNo != 2)
+                //check that the first record is ID 5
+                if (FilteredCustomers.CustomerList[0].CustomerNo != 5)
                 {
                     OK = false;
                 }
                 //check that the first record is ID 3
-                if (FilteredCustomers.CustomerList[1].CustomerNo != 3)
+                if (FilteredCustomers.CustomerList[1].CustomerNo != 2043)
                 {
                     OK = false;
-                }
-                //check that the first record is ID 6
-                if (FilteredCustomers.CustomerList[2].CustomerNo != 6)
-                {
-                    OK = false;
-                }
+                }                
             }
             else
             {

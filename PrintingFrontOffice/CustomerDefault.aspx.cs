@@ -75,6 +75,8 @@ public partial class CustomerDefault : System.Web.UI.Page
 
     protected void btnApply_Click(object sender, EventArgs e)
     {
+        //create an instance of a class
+        clsCustomerCollection LastNameCustomers = new clsCustomerCollection();
         
 
         
