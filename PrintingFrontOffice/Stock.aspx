@@ -21,6 +21,7 @@
             <asp:TextBox ID="txtLocation" runat="server" style="z-index: 1; left: 189px; top: 130px; position: absolute"></asp:TextBox>
             <asp:TextBox ID="txtDateAdded" runat="server" style="z-index: 1; left: 188px; top: 171px; position: absolute"></asp:TextBox>
             <asp:TextBox ID="txtDescription" runat="server" style="z-index: 1; left: 190px; top: 92px; position: absolute"></asp:TextBox>
+            <asp:Button ID="btnFind" runat="server" OnClick="btnFind_Click" style="z-index: 1; left: 335px; top: 53px; position: absolute" Text="Find" />
         </div>    
     </form>
 </body>
