@@ -19,11 +19,39 @@ public partial class Stock : System.Web.UI.Page
         //create a new instance of clsStock
         clsStock stock = new clsStock();
         //capture the StockNo
-        stock.StockNo = int.Parse(txtStockNo.Text);
-        //store the StockNo in the session object
-        Session["stock"] = stock;
-        //redirect to the viewer page
-        Response.Redirect("StockViewer.aspx");
+        string StockNo = txtStockNo.Text;
+        //capture the StockDescription
+        string StockDescription = txtDescription.Text;
+        //capture the StockLocation
+        string StockLocation = txtLocation.Text;
+        //capture the DateAdded
+        string DateAdded = txtDateAdded.Text;
+        //variable to store any error messages
+        string Error = "";
+        //validate the data
+        Error = stock.Valid(StockNo, StockDescription, StockLocation, DateAdded);
+        if (Error =="")
+        {
+            //capture the StockNo
+            stock.StockNo = Convert.ToInt32(StockNo);
+            //capture the StockDescription
+            stock.StockDescription = StockDescription;
+            //capture the StockLocation
+            stock.StockLocation = StockLocation;
+            //capture InStock
+            stock.InStock = InStock;
+            //capture DateAdded
+            stock.DateAdded = Convert.ToDateTime(DateAdded);
+            //store the stock in the session object
+            Session["stock"] = stock;
+            //redirect to the viewer page
+            Response.Write("StockViewer.aspx");
+        }
+        else
+        {
+            //display the error message
+            lblError.Text = Error;
+        }
     }
 
     protected void btnFind_Click(object sender, EventArgs e)
