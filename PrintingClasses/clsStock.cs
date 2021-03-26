@@ -143,5 +143,74 @@ namespace PrintingClasses
                 return false;
             }
         }
-    } 
+
+        public string Valid(string StockNo, string StockDescription, string StockLocation, string dateAdded)
+        {
+            //create a string variable to store the error
+            String Error = "";
+            //create a temporary variable to store date values
+            DateTime DateTemp;
+            //if the StockNo is blank
+            if (StockNo.Length == 0)
+            {
+                //record the error
+                Error = Error + "The Stock no may not be blank : ";
+            }
+            //if the Stock no is greater than 6 characters
+            if (StockNo.Length > 6)
+            {
+                //record the error
+                Error = Error + "The Stock no must be less than 6 characters : ";
+            }
+            try
+            {
+                //copy the dateAdded value to the DateTemp variable
+                DateTemp = Convert.ToDateTime(dateAdded);
+                if (DateTemp < DateTime.Now.Date)
+                {
+                    //record the error
+                    Error = Error + "The date cannot be in the past : ";
+                }
+                //check to see if the date is greater than today's date
+                if (DateTemp > DateTime.Now.Date)
+                {
+                    //record the error
+                    Error = Error + "The date cannot be in the future : ";
+                }
+            }
+            catch
+            {
+                //record the error
+                Error = Error + "The date was not a valid date : ";
+            }
+            //is the StockDescription blank
+            if (StockDescription.Length == 0)
+            {
+                //record the error
+                Error = Error + "The Stock Description may not be blank : ";
+            }
+            //if the StockDescription is too long
+            if (StockDescription.Length > 50)
+            {
+                //record the error
+                Error = Error + "The Stock Description must be less than 50 characters : ";
+            }
+            //is the StockLocation blank
+            if (StockLocation.Length == 0)
+            {
+                //record the error
+                Error = Error + "The Stock Location may not be blank : ";
+            }
+            //if the StockLocation is too long
+            if (StockLocation.Length > 50)
+            {
+                //record the error
+                Error = Error + "The Stock Location must be less than 50 characters : ";
+            }
+            //return any error messages
+            return Error;
+        }
+
+
+    }
 }
