@@ -23,6 +23,6 @@ public partial class _Default : System.Web.UI.Page
 
     protected void btnStock_Click(object sender, EventArgs e)
     {
-        Response.Redirect("Stock.aspx");
+        Response.Redirect("StockDefault.aspx");
     }
 }

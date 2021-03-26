@@ -9,9 +9,20 @@ using System.Web.UI.WebControls;
 
 public partial class Stock : System.Web.UI.Page
 {
+    Int32 StockNo;
     protected void Page_Load(object sender, EventArgs e)
     {
-
+        //get the number of the stock to be processed
+        StockNo = Convert.ToInt32(Session["StockNo"]);
+        if (IsPostBack == false)
+        {
+            //populate the list
+            DisplayStockDiscriptions();
+            if (StockNo != -1)
+            {
+                DisplayStockDiscriptions();
+            }
+        }
     }
 
     protected void btnOkay_Click(object sender, EventArgs e)
@@ -73,5 +84,69 @@ public partial class Stock : System.Web.UI.Page
             txtLocation.Text = stock.StockLocation;
             txtDateAdded.Text = stock.DateAdded.ToString();
         }
+    }
+    
+    //function for adding new records
+    void Add()
+    {
+        //create an instance of the Stock
+        clsStockCollection stock = new clsStockCollection();
+        //validate the data on the web forms
+        String Error = stock.ThisStock.Valid(txtStockNo.Text, txtDescription.Text, txtLocation.Text, txtDateAdded.Text);
+        //if the data is OK then addit to the object
+        if (Error ==  "")
+        {
+            stock.ThisStock.StockDescription = txtDescription.Text;
+            stock.ThisStock.StockLocation = txtLocation.Text;
+            stock.ThisStock.DateAdded = Convert.ToDateTime(txtDateAdded.Text);
+            stock.ThisStock.InStock = chkInStock.Checked;
+            //add the record
+            stock.Add();
+            //all donw sp redirect to the main page
+            Response.Redirect("StockDefault.aspx");
+        }
+        else
+        {
+            //report an error
+            lblError.Text = "There were problems with the data entered " + Error;
+        }
+    }
+
+    void Update ()
+    {
+        //create an instance of stock
+        PrintingClasses.clsStockCollection stock = new PrintingClasses.clsStockCollection();
+        //validate the data on the web form
+        String Error = stock.ThisStock.Valid(txtStockNo.Text, txtDescription.Text, txtLocation.Text, txtDateAdded.Text);
+        //if the data is okay then add it to the object
+        if (Error == "")
+        {
+            //find the record to update
+            stock.ThisStock.Find(StockNo);
+            //get the data entered by the user
+            stock.ThisStock.StockDescription = txtDescription.Text;
+            stock.ThisStock.StockLocation = txtLocation.Text;
+            stock.ThisStock.DateAdded = Convert.ToDateTime(txtDateAdded.Text);
+            stock.ThisStock.InStock = chkInStock.Checked;
+            //update the record
+            stock.Update();
+            Response.Redirect("StockDefault.aspx");
+        }
+        else
+        {
+            //report an error
+            lblError.Text = "There were problems with the data entered " + Error;
+        }
+    }
+    void DisplayStockDiscriptions()
+    {
+        clsStockCollection stock = new clsStockCollection();
+        //find the record to update
+        stock.ThisStock.Find(StockNo);
+        //display the data of this record
+        txtDescription.Text = stock.ThisStock.StockDescription;
+        txtLocation.Text = stock.ThisStock.StockLocation;
+        txtDateAdded.Text = stock.ThisStock.DateAdded.ToString();
+        chkInStock.Checked = stock.ThisStock.InStock;
     }
 }

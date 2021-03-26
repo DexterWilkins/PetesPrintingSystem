@@ -31,7 +31,21 @@ namespace PrintingClasses
                 //
             }
         }
-        public clsStock ThisStock { get; set; }
+
+        private clsStock mThisStock = new clsStock();
+        public clsStock ThisStock
+        {
+            get
+            {
+                //return private data
+                return mThisStock;
+            }
+            set
+            {
+                //set the private data
+                mThisStock = value;
+            }
+        }
 
         public clsStockCollection()
         {
@@ -61,6 +75,42 @@ namespace PrintingClasses
                 //point at the next record
                 Index++;
             }
+        }
+
+        public int Add()
+        {
+            //adds a new record to the database based on the values of mThisStock
+            clsDataConnection DB = new clsDataConnection();
+            //set the parameters for stored procedures
+            DB.AddParameter("@StockDescription", mThisStock.StockDescription);
+            DB.AddParameter("@StockLocation", mThisStock.StockLocation);
+            DB.AddParameter("@DateAdded", mThisStock.DateAdded);
+            DB.AddParameter("@InStock", mThisStock.InStock);
+            //execute the query returning the primary key value
+            return DB.Execute("sproc_tblStock_Insert");
+        }
+
+        public void Delete()
+        {
+            //deletes the record pointed to by thisStock
+            clsDataConnection DB = new clsDataConnection();
+            //set the parameters for the stored procedure
+            DB.AddParameter("@StockNo", mThisStock.StockNo);
+            //execute the procedure
+            DB.Execute("sproc_tblStock_Delete");
+        }
+
+        public void Update()
+        {
+            //update an existing record based on the values of thisStock
+            clsDataConnection DB = new clsDataConnection();
+            //set the parameters for stored procedures
+            DB.AddParameter("@StockDescription", mThisStock.StockDescription);
+            DB.AddParameter("@StockLocation", mThisStock.StockLocation);
+            DB.AddParameter("@DateAdded", mThisStock.DateAdded);
+            DB.AddParameter("@InStock", mThisStock.InStock);
+            //execute the procedure
+            DB.Execute("sproc_tblStock_Update");
         }
     }
 }
