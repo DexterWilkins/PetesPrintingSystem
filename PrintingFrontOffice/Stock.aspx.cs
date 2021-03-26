@@ -38,8 +38,6 @@ public partial class Stock : System.Web.UI.Page
             stock.StockDescription = StockDescription;
             //capture the StockLocation
             stock.StockLocation = StockLocation;
-            //capture InStock
-            stock.InStock = InStock;
             //capture DateAdded
             stock.DateAdded = Convert.ToDateTime(DateAdded);
             //store the stock in the session object

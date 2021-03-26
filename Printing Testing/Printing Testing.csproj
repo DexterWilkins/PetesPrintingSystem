@@ -59,6 +59,7 @@
     <Compile Include="tstOrderColllection.cs" />
     <Compile Include="tstOrderLine.cs" />
     <Compile Include="tstStock.cs" />
+    <Compile Include="tstStockCollection.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\PrintingClasses\PrintingClasses.csproj">
