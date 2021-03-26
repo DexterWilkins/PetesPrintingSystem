@@ -124,8 +124,66 @@ namespace Printing_Testing
            Assert.AreEqual(AllOrders.ThisOrder, TestItems);
         }
 
+        [TestMethod]
+        public void DeleteMethodOK()
+        {
+            //create an instance of the class we want to create
+            clsOrderCollection AllOrders = new clsOrderCollection();
+            //string variable to store
+            clsOrder TestItem = new clsOrder();
 
+            Int32 PrimaryKey = 0;
 
+            TestItem.OrderNo = 1;
+            TestItem.DeliveryDate = DateTime.Now.Date;
+            TestItem.OrderDate = DateTime.Now.Date;
+            TestItem.PartNo = 1234567;
 
+            AllOrders.ThisOrder = TestItem;
+
+            PrimaryKey = AllOrders.Add();
+
+            TestItem.OrderNo = PrimaryKey;
+
+            AllOrders.ThisOrder.Find(PrimaryKey);
+
+            AllOrders.Delete();
+
+            Boolean Found = AllOrders.ThisOrder.Find(PrimaryKey);
+
+            Assert.IsFalse(Found);
+        }
+
+        [TestMethod]
+        public void UpdateMethodOK()
+        {
+            //create an instance of the class we want to create
+            clsOrderCollection AllOrders = new clsOrderCollection();
+            //create the item of test data
+            clsOrder TestItem = new clsOrder();
+            //var to store the primary key
+            Int32 PrimaryKey = 0;
+            //set its properties
+            TestItem.OrderNo = 1;
+            TestItem.DeliveryDate = DateTime.Now.Date;
+            TestItem.OrderDate = DateTime.Now.Date;
+            //set ThisCustomer to the test data
+            AllOrders.ThisOrder = TestItem;
+            //add the record
+            PrimaryKey = AllOrders.Add();
+            //set the primary key of the test data
+            TestItem.OrderNo = PrimaryKey;
+            //modify the test data
+            
+            TestItem.DeliveryDate = DateTime.Now.Date;
+            //set the record based on the new test data
+            AllOrders.ThisOrder = TestItem;
+            //update the record
+            AllOrders.Update();
+            //find the record
+            AllOrders.ThisOrder.Find(PrimaryKey);
+            //test to see ThisCustomer matches the test data
+            Assert.AreEqual(AllOrders.ThisOrder, TestItem);
+        }
     }
 }
