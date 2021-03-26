@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 
 namespace PrintingClasses
 {
@@ -64,6 +65,16 @@ namespace PrintingClasses
             DB.AddParameter("@PartNo", mThisOrder.PartNo);
 
             return DB.Execute("sproc_tblOrder_Insert");
+        }
+
+        public void Update()
+        {
+            throw new NotImplementedException();
+        }
+
+        public void Delete()
+        {
+            throw new NotImplementedException();
         }
     }
 }

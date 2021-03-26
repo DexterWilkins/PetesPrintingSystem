@@ -85,7 +85,7 @@
 <body>
     <form id="form1" runat="server">
         <p>
-            <asp:Button ID="btnOk" runat="server" CssClass="auto-style1" Text="OK" />
+            <asp:Button ID="btnOk" runat="server" CssClass="auto-style1" Text="OK" OnClick="btnOk_Click" />
             <asp:TextBox ID="txtOrderNo" runat="server" CssClass="auto-style5"></asp:TextBox>
         <asp:Button ID="btnFind" runat="server" CssClass="auto-style2" OnClick="btnFind_Click1" Text="Find" />
         </p>
@@ -107,7 +107,7 @@
         </p>
         <p>
             &nbsp;</p>
-        <asp:Button ID="btnCancel" runat="server" CssClass="auto-style3" Text="Cancel" />
+        <asp:Button ID="btnCancel" runat="server" CssClass="auto-style3" Text="Cancel" OnClick="btnCancel_Click" />
         <asp:Label ID="lblPartNo" runat="server" CssClass="auto-style12" Text="PartNo"></asp:Label>
     </form>
 </body>
