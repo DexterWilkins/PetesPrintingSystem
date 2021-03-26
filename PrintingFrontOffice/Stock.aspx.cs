@@ -35,14 +35,14 @@ public partial class Stock : System.Web.UI.Page
         //variable to store the result of the find operation
         Boolean Found = false;
         //get the primary key entered by the user
-        StockNo = Convert.ToInt32(txtStockNo);
+        StockNo = Convert.ToInt32(txtStockNo.Text);
         //find the record
         Found = stock.Find(StockNo);
         //if found
         if (Found == true)
         {
             //display the values of the properties in the form
-            txtStockNo.Text = stock.StockNo;
+            txtStockNo.Text = stock.StockNo.ToString();
             txtDescription.Text = stock.StockDescription;
             txtLocation.Text = stock.StockLocation;
             txtDateAdded.Text = stock.DateAdded.ToString();
